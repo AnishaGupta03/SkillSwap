@@ -8,6 +8,11 @@ const connectDB = require("./config/db");
 dotenv.config();
 
 //route import
+const userRoutes = require('./routes/userRoutes');
+const skillRoutes = require('./routes/skillRoutes');
+const sessionRoutes = require('./routes/sessionRoutes');
+const chatRoutes = require('./routes/chatRoutes');
+const reviewRoutes = require('./routes/reviewRoutes');
 
 //mongo connection
 connectDB();
@@ -22,6 +27,11 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 //routes
+app.use('/api/users', userRoutes);
+app.use('/api/skills', skillRoutes);
+app.use('/api/sessions', sessionRoutes);
+app.use('/api/chats', chatRoutes);
+app.use('/api/reviews', reviewRoutes);
 
 //port
 const PORT = process.env.PORT || 8080;
